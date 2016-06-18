@@ -3,7 +3,7 @@
 * Twitter: @dev_yosh
 * Github: @dev-yosh1
 * Description: Entendiendo el uso de px, em y rem.
-* Version: 1.1
+* Version: 1.2
 * Fecha: 18/06/2016 03:43 a.m.
 -->    
 <html id="raiz">
@@ -30,31 +30,56 @@
     }
     //---  @@Resource 1  ---
     $(function() {
-      console.log("-font-size root- from element html:", getStyle(document.getElementById("raiz"), "font-size"));
-      console.log("font-size from '#contenedor' 2em * 16px(font-size root 'html'):", getStyle(document.getElementById("contenedor"), "font-size"));
-      console.log("font-size from '#seccion1' 2em * 32px(font-size parent element '#contenedor'):", getStyle(document.getElementById("seccion1"), "font-size"));
+      $("#log").append("-font-size root- from element html: " +  getStyle(document.getElementById("raiz"), "font-size"));
+      $("#log").append("<br/>");
+      $("#log").append("font-size from '#contenedor' 2em * 16px(font-size root 'html'): " + getStyle(document.getElementById("contenedor"), "font-size"));
+      $("#log").append("<br/>");
+      $("#log").append("font-size from '#seccion1' 2em * 32px(font-size parent element '#contenedor'): " + getStyle(document.getElementById("seccion1"), "font-size"));
+      $("#log").append("<br/>");
     });
   </script>
   <style>
-  div {
-    font-size: 2em;
-  }
   body {
     width: 100%;
     max-width: 64rem;
     margin: 11px auto;
   }
+
+  div {
+    font-size: 2em;
+  }
+  
+  #tituloP {
+    color: #4682B4;
+  }
+
+  #log {
+    font: 18px "Lucida Console";
+    margin: 5px;
+    color: #000080;
+  }
+
+  #contenedor {
+    color: #1E90FF;
+  }
+
+  /* http://www.oloblogger.com/2013/01/estilo-css-para-division-hr.html */
+  hr {border: 0; height: 0; border-top: 4px double black; text-align:center;}
+  hr:after {position: relative; top: -22px; content:"\25cf\25cf\25cf"; font-size: 23px;line-height: 34px; color: black;}
+
   </style>
   </head>
   <body>
-    <h1>Entendiendo el concepto de las unidades 'em'</h1>
-    
+    <h1 id="tituloP">Entendiendo el concepto de las unidades 'em'</h1>
+    <hr/>
     <div id="contenedor">
       this is parent
       <div id="seccion1">
         this is child
       </div>
     </div>
+    <hr/>
+    <div id="log"></div>
 
   </body>
 </html>
